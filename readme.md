@@ -1,13 +1,4 @@
----
-title: "Tutorial - Functions in R"
-author: "Lars Ullrich"
-date: "7 June 2016"
-output: 
-  html_document:
-    theme: simplex
----
-
-
+# Functions in R 
 
 ## What are functions?
 
@@ -19,7 +10,7 @@ Whenever you find yourself writing a word followed by opening and closing bracke
 
 
 
-## Example {.tabset .tabset-fade .tabset-pills}
+## Example 
 ### Code
 
 ```r
@@ -46,7 +37,7 @@ I'm pretty sure that there is an alternative way to extract the parts we wanted 
 ### Excercise
 Try to use functions deliberately. All built-in functions in R and every function from a package should have proper documentation. Make a habit of calling up the documentation whenever you are using a new function or whenever you are stuck. You can access the documentation of a function by pressing F1 in RStudio when the cursor is on the name of the function or executing `?FUNCTION_NAME` where `FUNCTION_NAME` rather unsurprisingly is the name of the function. Read the documentation carefully and have a look at the examples, if there are any (they usually are at the bottom of the page). Another useful thing for you to do when you are stuck is searching for the function - or the package - on the search engine of your choice (a process also known as googling...). Usually you will find links to the documentation for the package and, depending on how specific your query was, to stackoverflow questions. Use those resources!
 
-## Writing our own function {.tabset .tabset-fade .tabset-pills}
+## Writing our own function 
 
 ### Code
 
@@ -71,7 +62,7 @@ Every definition of a new function starts with the `function` keyword. After tha
 ### Exercise
 Write a simple function. It isn't hard and the possibilities are endless. 
 
-## Writing more advanced functions {.tabset .tabset-fade .tabset-pills}
+## Writing more advanced functions
 
 ### Code
 
@@ -98,7 +89,7 @@ Functions are very powerful and even more so when we combine them. This is an ex
 
 Let's get started.
 
-## Loading the libraries {.tabset .tabset-fade .tabset-pills}
+## Loading the libraries 
 
 ### Code
 First of all, we have to load a library. 
@@ -110,7 +101,7 @@ library("rvest")
 ### Explanation
 Nothing much to see here. We load a library to help us with our task. [rvest](https://github.com/hadley/rvest) is a web scraping library written by [Hadley Wickham](https://github.com/hadley). He is the authour of many incredibly useful packages like [dplyr](https://github.com/hadley/dplyr) or [tidyr](https://github.com/hadley/tidyr)
 
-## Defining our function {.tabset .tabset-fade .tabset-pills}
+## Defining our function
 
 ### Code
 
@@ -170,7 +161,7 @@ The `%>%` operator chains functions together using the output of one function as
 In our example it would translate to: `read_html(teams_url)` THEN `html_nodes(OUTPUT OF read_html, "a.group-item")`
 THEN `html_attr(OUTPUT OF html_nodes, "href", TRUE)`. The output of the last function (`html_attr`) is what is stored in the `teams`variable.
 
-## Making our function better {.tabset .tabset-fade .tabset-pills}
+## Making our function better
 
 ### Code
 So far our function isn't very functiony (which isn't a word but should be). Let's generalize a bit more. Right now our function only ever visits the one URL and extracts the same group of links. We can fix that by passing the url as a parameter so we can change it with every function call.
@@ -272,7 +263,7 @@ get_urls("http://www.uefa.com/uefaeuro/", "a.group-item")
 ## [24] "/uefaeuro/season=2016/teams/team=110/index.html"
 ```
 
-## Combining our function with other functions {.tabset .tabset-fade .tabset-pills}
+## Combining our function with other functions 
 Ok, so now we have a working function we can use to get links from a URL. All we need to do is pass it the URL to go to and the nodes we are intrested in. It is a rather useful little function and wasn't very hard to write. Let's combine it with other functions to get the URLs for all teams (like we did until now) and visit them all to get every player URL. 
 
 ### Code
